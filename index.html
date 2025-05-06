@@ -1,10 +1,146 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SpiderSWeb</title>
+    <title>SpiderWeb</title>
+    <meta charset="UTF-8">
     <link rel="icon" href="favicon.gif" type="image/gif">
+    <style>
+      html,
+      body {
+        margin: 6px;
+        background-color: #3d0c50;
+        cursor: default;
+      }
+      .navbar {
+        background-color: #3f0c5e;
+        border-radius: 12px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        max-height: 70px;
+      }
+      .nav-button-container {
+        translate: 100px -52.5px;
+        display: flex;
+        overflow: hidden;
+        max-width: 1350px;
+      }
+      .nav-buttons {
+        background-color: #3f0c5e;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-family: 'verdana';
+        flex: 1;
+        overflow: hidden;
+      }
+      .nav-buttons {
+        cursor: pointer;
+      }
+      .heading, .description, .latest-news {
+        color: #fff;
+        font-family: 'verdana';
+        display: flex;
+        justify-content: center;
+      }
+      .description {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      #search-bar {
+        cursor: text;
+        padding: 10px 6px;
+        border-radius: 12px;
+        border: none;
+        color: #000;
+        transition: .3s;
+      }
+      #svg-search {
+        translate: -40px;
+      }
+      #logo-icon {
+        width: 100px;
+        height: 60px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <h2>Under Construction</h2>
+    <div class="navbar">
+      <img src="https://spiderrocket.github.io/home-logo.jpg" id="logo-icon" alt="" onclick="redirect('/')">
+      <div class="nav-button-container">
+      	<button class="nav-buttons" onclick="redirect('/sites')">
+          Sites
+        </button>
+        <button class="nav-buttons" onclick="redirect('/games')">
+          Games
+        </button>
+        <button class="nav-buttons" onclick="redirect('/libraries')">
+          Libraries
+        </button>
+        <button class="nav-buttons" onclick="redirect('/resources')">
+          Resources
+        </button>
+        <button class="nav-buttons" onclick="redirect('/changelog')">
+          Changelog
+        </button>
+        <button class="nav-buttons" onclick="redirect('/help')">
+          Help
+        </button>
+        <button class="nav-buttons" onclick="redirect('/dev')">
+          Dev Tools
+        </button>
+        
+        <input id="search-bar" placeholder="Search..." class="nav-buttons">
+        <button class="nav-buttons">
+          <svg id="svg-search" style="width: 25; height:20" stroke="currentColor" fill="none" xmlns="http://w3.org/2000/svg">
+            <circle r="7" cx="10" cy="8"></circle>
+          	<path d="M 14 14 L 25 25"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="heading">
+        <h1 id="header">
+          Welcome to SpiderWeb
+        </h1>
+      </div>
+      <div class="description">
+        <p>
+          Welcome to SpiderWeb, your ultimate destination for all things web development! At SpiderWeb, we believe that the best ideas come from collaboration and community input. That’s why we actively encourage user contributions, allowing you to share your insights, tools, and resources with fellow developers.
+
+Our platform boasts a vast array of sites and tools designed to cater to every aspect of web development. Whether you’re a seasoned pro or just starting out, you’ll find everything you need to bring your projects to life. From coding tutorials and design resources to the latest in web technologies, SpiderWeb is your one-stop shop for enhancing your skills and expanding your toolkit.
+
+Join a thriving community of like-minded individuals who are passionate about web development. With SpiderWeb, you’re not just a visitor; you’re a vital part of a growing ecosystem that values creativity and innovation. Dive in, share your voice, and explore the endless possibilities that await you at SpiderWeb!
+        </p>
+      </div>
+      <div class="latest-news">
+        <h2>
+          Latest News:
+        </h2>
+        <span id="news"></span>
+      </div>
+    </div>
+    <script>
+      let searchBar = document.querySelector("#search-bar");
+      let news = document.querySelector("#news")
+      
+      let newsChannel = new BroadcastChannel('news-channel');
+      newsChannel.onmessage = (event) => {
+        news.innerHTML = event.data;
+      }
+      
+      function checkActive(element = searchBar) {
+        if(document.activeElement.id === element.id) {
+          element.style.backgroundColor = "#fff";
+        } else {
+          element.style.backgroundColor = "#3f0c5e";
+        }
+      }
+      function redirect(url) {
+        if (url.startsWith("/"))
+        window.location.href = `https://spiderrocket.github.io${url}`
+      }
+      setInterval(checkActive, 1);
+    </script>
   </body>
 </html>
