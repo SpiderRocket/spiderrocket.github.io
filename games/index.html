@@ -128,14 +128,6 @@
           window.location.href = `https://spiderrocket.github.io${url}`;
         }
       }
-      function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-      alert(getUrlParameter('game'))
-      alert(window.location.pathname)
     </script>
   </body>
 </html>
