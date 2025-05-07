@@ -97,7 +97,7 @@
         </h2>
       </div>
       <textarea id="news-input"></textarea>
-      <button id="submit-news" onclick="submitNews()" class="nav-buttons">
+      <button id="submit-news" onclick="postNews()" class="nav-buttons">
         Submit
       </button>
     </div>
@@ -120,6 +120,7 @@
       function postNews() {
         let news = editor.getValue();
         newsChannel.postMessage(news);
+        alert("Posted!")
       }
     </script>
   </body>
