@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpiderWeb - Games</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.gif" type="image/gif">
+    <style>
+      html,
+      body {
+        margin: 6px;
+        background-color: #3d0c50;
+        cursor: default;
+      }
+      .navbar {
+        background-color: #3f0c5e;
+        border-radius: 12px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        max-height: 70px;
+      }
+      .nav-button-container {
+        translate: 100px -52.5px;
+        display: flex;
+        overflow: hidden;
+        max-width: 1350px;
+      }
+      .nav-buttons {
+        background-color: #3f0c5e;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-family: 'verdana';
+        flex: 1;
+        overflow: hidden;
+      }
+      .nav-buttons {
+        cursor: pointer;
+      }
+      .heading, .description {
+        color: #fff;
+        font-family: 'verdana';
+        display: flex;
+        justify-content: center;
+      }
+      .description {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      .game-image {
+        border-radius: 12px;
+        background-color: #3f0c5e;
+      }
+      .game-buttons {
+        background-color: #3f0c5e;
+        color: #fff;
+        text-decoration: none;
+        font-family: 'verdana';
+        padding: 6px 6px;
+        width: 300px;
+        border-radius: 12px;
+      }
+      .game-text {
+        display: flex;
+        justify-content: center;
+      }
+      #logo-icon {
+        width: 100px;
+        height: 60px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="https://spiderrocket.github.io/home-logo.jpg" id="logo-icon" alt="" onclick="redirect('/')">
+      <div class="nav-button-container">
+        <button class="nav-buttons" onclick="redirect('/sites')">
+          Sites
+        </button>
+        <button class="nav-buttons" onclick="redirect('/libraries')">
+          Libraries
+        </button>
+        <button class="nav-buttons" onclick="redirect('/resources')">
+          Resources
+        </button>
+        <button class="nav-buttons" onclick="redirect('/changelog')">
+          Changelog
+        </button>
+        <button class="nav-buttons" onclick="redirect('/help')">
+          Help
+        </button>
+        <button class="nav-buttons" onclick="redirect('/dev')">
+          Dev Tools
+        </button>
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="heading">
+        <h1 id="header">
+          SpiderWeb - Games
+        </h1>
+      </div>
+      <div class="description">
+        <p>
+          This is just a page with HTML games &mdash; We&apos;re sure you&apos;ve seen them before. None of these games are ours, they're just embedded. More info on the <a href="https://spiderrocket.github.io/resources" target="_blank">Resources</a> page.
+        </p>
+      </div>
+      <div class="games">
+        <div class="game-buttons">
+          <a href="https://spiderrocket.github.io">
+            <img src="https://www.htmlgames.com/uploaded/game/thumb/marblemerge300200.webp" class="game-image">
+          </a>
+          <div class="game-text">
+            <p>Marble Merge</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+            let searchBar = document.querySelector("#search-bar");
+      let news = document.querySelector("#news")
+
+      let newsChannel = new BroadcastChannel('news-channel');
+      newsChannel.onmessage = (event) => {
+        news.innerHTML = event.data;
+      }
+      function redirect(url) {
+        if (url.startsWith("/")) {
+          window.location.href = `https://spiderrocket.github.io${url}`;
+        }
+      }
+      function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+      alert(getUrlParameter('game'))
+      alert(window.location.pathname)
+    </script>
+  </body>
+</html>
