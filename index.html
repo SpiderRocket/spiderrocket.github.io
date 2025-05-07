@@ -35,7 +35,7 @@
       .nav-buttons {
         cursor: pointer;
       }
-      .heading, .description, .latest-news {
+      .heading, .description, .latest-news, .news, .important, .important-notes {
         color: #fff;
         font-family: 'verdana';
         display: flex;
@@ -44,6 +44,13 @@
       .description {
         text-align: center;
         font-size: 0.9rem;
+      }
+      .news {
+        text-align: center;
+        display: block;
+      }
+      .important {
+        
       }
       #search-bar {
         cursor: text;
@@ -117,7 +124,21 @@ Join a thriving community of like-minded individuals who are passionate about we
         <h2>
           Latest News:
         </h2>
-        <span id="news"></span>
+        
+      </div>
+      <div class="news">
+          <p>SpiderWeb has been released!</p>
+          <p>It's still in development, but we hope to add as many useful tools and sites as we can.</p>
+          <p>For now, enjoy what we have!</p>
+        </div>
+      <br><br><br>
+      <div class="important-notes">
+        <h2>
+          Important Notes
+        </h2>
+      </div>
+      <div class="important">
+        <p>Our servers are currently down, so any features with a server have been temporarily removed.  We hope to fix the issue soon.</p>
       </div>
     </div>
     <script>
