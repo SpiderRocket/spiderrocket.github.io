@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpiderWeb - Marble Merge</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.gif" type="image/gif">
+    <style>
+      html,
+      body {
+        margin: 6px;
+        background-color: #3d0c50;
+        cursor: default;
+      }
+      embed {
+        width: 100%;
+        height: 800px
+      }
+      .navbar {
+        background-color: #3f0c5e;
+        border-radius: 12px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        max-height: 70px;
+      }
+      .nav-button-container {
+        translate: 100px -52.5px;
+        display: flex;
+        overflow: hidden;
+        max-width: 1350px;
+      }
+      .nav-buttons {
+        background-color: #3f0c5e;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-family: 'verdana';
+        flex: 1;
+        overflow: hidden;
+      }
+      .nav-buttons {
+        cursor: pointer;
+      }
+      .heading, .description {
+        color: #fff;
+        font-family: 'verdana';
+        display: flex;
+        justify-content: center;
+      }
+      .description {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      #logo-icon {
+        width: 100px;
+        height: 60px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="https://spiderrocket.github.io/home-logo.jpg" id="logo-icon" alt="" onclick="redirect('/')">
+      <div class="nav-button-container">
+        <button class="nav-buttons" onclick="redirect('/sites')">
+          Sites
+        </button>
+        <button class="nav-buttons" onclick="redirect('/games')">
+          Games
+        </button>
+        <button class="nav-buttons" onclick="redirect('/libraries')">
+          Libraries
+        </button>
+        <button class="nav-buttons" onclick="redirect('/resources')">
+          Resources
+        </button>
+        <button class="nav-buttons" onclick="redirect('/changelog')">
+          Changelog
+        </button>
+        <button class="nav-buttons" onclick="redirect('/help')">
+          Help
+        </button>
+        <button class="nav-buttons" onclick="redirect('/dev')">
+          Dev Tools
+        </button>
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="heading">
+        <h1 id="header"></h1>
+      </div>
+      <div class="description"></div>
+      <embed class="site" src="https://cdn.htmlgames.com/MarbleMerge/">
+      <button onclick="fullscreen()" class="nav-buttons" style="width: 100%">
+        Fullscreen 
+      </button>
+    </div>
+    <script>
+      function redirect(url) {
+        if (url.startsWith("/")) {
+          window.location.href = `https://spiderrocket.github.io${url}`;
+        }
+      }
+      function fullscreen() {
+        document.querySelector("embed").requestFullscreen();
+      }
+    </script>
+  </body>
+</html>
