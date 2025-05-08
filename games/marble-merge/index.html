@@ -13,7 +13,16 @@
       }
       embed {
         width: 100%;
-        height: 800px
+        height: 800px;
+        display: none;
+      }
+      .play-screen {
+        width: 100%;
+        height: 800px;
+        display: flex;
+        justify-content: center;
+        background-color: #3d0c5e;
+        z-index: -2;
       }
       .navbar {
         background-color: #3f0c5e;
@@ -46,8 +55,18 @@
         justify-content: center;
       }
       .description {
+        display: block;
         text-align: center;
         font-size: 0.9rem;
+      }
+      .play-button {
+        width: 140px;
+        height: 40px;
+        background-color: #af9fff;
+        margin: auto;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
       }
       #logo-icon {
         width: 100px;
@@ -85,9 +104,21 @@
     </div>
     <div class="body-content">
       <div class="heading">
-        <h1 id="header"></h1>
+        <h1 id="header">
+          Marble Merge
+        </h1>
       </div>
-      <div class="description"></div>
+      <div class="description" style="translate: 0 380px; z-index: 2; ">
+        <img src="https://www.htmlgames.com/uploaded/game/thumb200/marblemerge200.webp">
+      	<p>
+          Marble Merge
+        </p>
+      </div>
+      <div class="play-screen">
+        <button class="play-button" onclick="playgame()">
+          Play
+        </button>
+      </div>
       <embed class="site" src="https://cdn.htmlgames.com/MarbleMerge/">
       <button onclick="fullscreen()" class="nav-buttons" style="width: 100%">
         Fullscreen 
@@ -101,6 +132,11 @@
       }
       function fullscreen() {
         document.querySelector("embed").requestFullscreen();
+      }
+      function playgame() {
+        document.querySelector(".play-screen").style.display = 'none';
+        document.querySelector(".description").style.display = 'none';
+        document.querySelector("embed").style.display = 'block';
       }
     </script>
   </body>
