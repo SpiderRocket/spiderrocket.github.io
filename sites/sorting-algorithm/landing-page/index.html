@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sorting Algorithms</title>
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        background-color: #010018;
+        color: white;
+        font-family: arial;
+      }
+
+      h1, h2, h3, h4, h5 {
+        display: flex;
+        justify-content: center;
+      }
+
+      #number-input {
+        resize: none;
+        width: 40%;
+        height: 400px;
+        background-color: #8000ff;
+        border: 10px solid #8000ff;
+        outline: none;
+        float: left;
+        color: white;
+        border-radius: 20px;
+      }
+
+      #number-output {
+        resize: none;
+        width: 40%;
+        height: 400px;
+        background-color: #8000ff;
+        border: 10px solid #8000ff;
+        outline: none;
+        float: right;
+        color: white;
+        border-radius: 20px;
+      }
+
+      #number-input::placeholder, #number-output::placeholder {
+        color: white;
+        font-size: 1rem;
+      }
+
+      #img-arrow {
+        width: 17.461287%;
+        translate: 0 40%;
+      }
+
+      .convert-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      #convert-button, #copy-button {
+        width: 15%;
+        height: 50px;
+        float: center;
+        background-color: #8000ff;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-size: 2rem;
+        translate: 282.25%;
+      }
+      
+      #copy-button {
+        translate: 282.25% 50%;
+        font-size: 1.6rem;
+      }
+      
+      #delimiter-input {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        translate: 260.5% 30%;
+        background-color: #8000ff;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+      }
+      #delimiter-input::placeholder {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sorting Algorithm</h1>
+      <h3>Enter a string of numbers (separated by commas), enter the delimiter you want in the input below, press convert, and the numbers will sort themselves!</h3>
+      <h5 style="color: #ffffffaa">Note: If the string you provided has extra whitespaces or word characters, the textbox will automatically format them, so you do not need to worry about them.</h5>
+    </header>
+    <textarea id="number-input" placeholder="Type or paste an array..."></textarea>
+    <img src="https://spiderrocket999.github.io/whohochubby/20250907_1357_Purple%20Arrows%20Duo_simple_compose_01k4jzf2gtfcg997hekx6w8em7.png" id="img-arrow">
+    <textarea id="number-output" disabled placeholder="...and the result will appear here!"></textarea>
+    <div class="convert-container">
+      <button id="convert-button" onclick="convert()"><strong>Convert</strong></button>
+      <input id="delimiter-input" placeholder="Delimiter" value=",">
+      <button id="copy-button"><strong>Copy Output</strong></button>
+    </div>
+    <script>
+      let inputText = document.querySelector("#number-input").value.replace(/\s+/g, "").split(",");
+      inputText = inputText.map((value, index) => value = value.replace(/\D+/g, ""));
+      document.querySelector("#number-input").value = inputText;
+
+      document.querySelector("#number-input").addEventListener("input", function() {
+        let inputText = this.value.replace(/\s+/g, "").split(",");
+        inputText = inputText.map((value, index) => value = value.replace(/\D+/, ""));
+        this.value = inputText;
+      });
+
+      function convert() {
+        try {
+          let input = document.querySelector("#number-input");
+          let output = document.querySelector("#number-output");
+          let delimiterInput = document.querySelector("#delimiter-input")
+          let inputArray = input.value.split(",");
+          
+          inputArray = inputArray.filter(item => item !== "");
+          
+          inputArray.sort((a, b) => a - b);
+          
+          let outputArray = inputArray.join(delimiterInput.value);
+          output.value = outputArray;
+        } catch(err) {
+          throw new Error(`Array Sort Failed: \n\n${err.stack}`)
+        }
+      }
+    </script>
+  </body>
+</html>
